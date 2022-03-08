@@ -14,10 +14,10 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Homepage" component={HomePage} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="signUp" component={signUp} options={{ headerShown: false }} />
+      <Stack.Screen name="Homepage" component={HomePage} options={{ headerShown: false }} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{ headerShown: false }} />
+      <Stack.Screen name="signUp" component={signUp} options={{ headerShown: false }} />
       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: true }} />
       <Stack.Screen name="Scanner" component={Scanner} options={{ headerShown: true }} />
     </Stack.Navigator>

@@ -1,7 +1,8 @@
- import { View, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { resetPassword } from '../services';
+import { ImageBackground } from 'react-native-web';
 
 const ForgetPassword = ({ navigation }) => {
     const [email, setEmail] = useState('')
@@ -11,21 +12,24 @@ const ForgetPassword = ({ navigation }) => {
     }
     return (
         <View style={styles.container}>
-            <View style={styles.viewDirection}>
-                <Image style={styles.img} source={require("../assets/rose.png")} />
-                {/* <Image style={styles.img} source={require("../assets/BackGround2.png")} /> */}
-            </View>
-            <Text style={styles.textDesign3}>Forgot password</Text>
-            <TextInput
-                style={styles.fieldText_Design}
-                placeholder='Enter your email address'
-                value={email}
-                onChangeText={(email) => setEmail(email)}
-            />
-            <TouchableOpacity onPress={reset} style={styles.loginButton}>
-                <Text>Submit</Text>
-            </TouchableOpacity>
+            <ImageBackground style={{ height: "100%", width: "100%" }} source={require("../assets/backImg.png")}>
+                <Text style={styles.forgotDesign}>Forgot Password</Text>
+                <Text style={{marginLeft:80, marginTop:50}}>Please enter your email to reset password</Text>
+                <TextInput
+                    style={styles.fieldInput_a}
+                    placeholder='Enter your email address'
+                    value={email}
+                    onChangeText={(email) => setEmail(email)}
+                />
+                <TouchableOpacity onPress={reset} style={styles.loginButton}>
+                    <Text style={{color:"white"}}>Submit</Text>
+                </TouchableOpacity>
 
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                    <Text style={styles.labelBtn}>Sign In</Text>
+                </TouchableOpacity>
+
+            </ImageBackground>
         </View>
     );
 };
@@ -36,23 +40,46 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    forgotDesign:{
+         fontSize:18,
+        alignSelf:"center",
+        justifyContent:"center",
+        marginTop:180,
+    },
+    fieldInput_a: {
+        backgroundColor: '#F1F0F0',
+        width: 250,
+        height: 40,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 20,
+        //  marginTop: 180,
+        
+        borderColor: "#fff",
+        keyboardType: "numeric",
+        alignSelf:"center",
+        justifyContent:"center",
+    },
     loginButton: {
         height: 40,
         width: 250,
         color: '#FFC0CB',
-        paddingHorizontal: 15,
+        paddingHorizontal: 100,
         paddingVertical: 5,
-        backgroundColor: '#E46060',
+        backgroundColor: '#E605EE',
+        opacity:0.6,
         borderRadius: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignSelf:"center",
+        justifyContent:"center",
+        marginTop:10    ,
     },
     img: {
         height: 150,
         width: 70,
         marginBottom: 70, //nb
         borderRadius: 10,
-       
+
     },
     fieldText_Design: {
         backgroundColor: '#F1F0F0',
@@ -73,7 +100,7 @@ const styles = StyleSheet.create({
         color: '#000',
         fontSize: 15,
         // fontFamily: 'brush-script mt',
-        marginRight: 150,
+        marginRight: 40,
         marginBottom: 20,
     },
     textDesign4: {
@@ -101,6 +128,12 @@ const styles = StyleSheet.create({
     viewDirection: {
         flexDirection: 'row',
         // marginTop:100,
+    },
+    labelBtn: {
+        color: 'grey',
+        fontSize: 13,
+        marginLeft: 280,
+        marginTop: 20,
     },
     viewDirection2: {
         flexDirection: 'row',
